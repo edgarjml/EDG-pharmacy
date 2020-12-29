@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
     <!--LOGIN BOX CSS-->
     <link rel="stylesheet" href="/css/master.css">
 </head>
+
 <body>
     <div class="container">
         <!--MENU DE NAVEGACION-->
@@ -32,7 +34,7 @@
                     <a href="/html/about us.html">Conozcanos</a>
                 </li>
             </ul>
-            <ul class="nav-menu-right">
+            <ul>
                 <li>
                     <a href="/html/register.html">Registro</a>
                 </li>
@@ -50,18 +52,22 @@
         <div class="container-register">
             <div class="register-box">
                 <h1>Crea tu cuenta</h1>
-                <form>
-                    <input name="name" type="text" placeholder="Ingrese sus nombres y apellidos">
+                <form id="register-form">
+                    <div class="container-name">
+                        <input id="name" type="text" placeholder="Ingrese sus nombres" autofocus required>
+                        <input id="lastname" type="text" placeholder="Ingrese sus apellidos" required>
+                    </div>
 
-                    <input name="cedula" type="text" placeholder="Ingrese su número de cédula o pasaporte">
+                    <input id="cedula" type="text" placeholder="Ingrese su número de cédula o pasaporte" required>
 
-                    <input name="email" type="text" placeholder="Ingrese su correo electrónico">
-                  
-                    <input name="passwordRegister "type="password" placeholder="Cree una contraseña">
+                    <input id="email" type="email" placeholder="Ingrese su correo electrónico" required>
 
-                    <input name="repeatPasswordRegister "type="password" placeholder="Repita la contraseña">
+                    <input id="password" type="password" placeholder="Cree una contraseña" required>
 
-                    <input class="buttonRegister" type="submit" value="Registrar">
+                    <input id="confirmPassword" type="password" placeholder="Repita la contraseña" required>
+
+                    <input id="btn" class="buttonRegister" type="submit" value="Registrar">
+
                     <p><a href="/html/login.html">Ya tengo una cuenta</a></p>
                 </form>
             </div>
@@ -74,5 +80,31 @@
     <footer class="footer">
         <h3>Alien Ø Jazc<br>Copyright</h3>
     </footer>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCbek3UVuarQPall0Fvi2YOoNPAfao-sCQ",
+            authDomain: "turnos-farmacia.firebaseapp.com",
+            projectId: "turnos-farmacia",
+            storageBucket: "turnos-farmacia.appspot.com",
+            messagingSenderId: "284721027828",
+            appId: "1:284721027828:web:b7066a3b3b44ba27315ca1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="/main.js"></script>
+
 </body>
+
 </html>

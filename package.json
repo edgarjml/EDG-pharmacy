@@ -1,0 +1,19 @@
+{
+  "name": "edg-pharmacy",
+  "version": "1.0.0",
+  "description": "Aplicación de turnos de farmacia",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edgarjml/EDG-pharmacy.git"
+  },
+  "author": "Edgar Murillo & Adrian Zambrano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edgarjml/EDG-pharmacy/issues"
+  },
+  "homepage": "https://github.com/edgarjml/EDG-pharmacy#readme"
+}
