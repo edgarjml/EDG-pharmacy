@@ -109,10 +109,11 @@ formulario.addEventListener('submit', async(e) => {
 
         try {
             // REGISTRA UN USUARIO EN FIREBASE
-            await db.collection('usuarios').doc().set(newUser);
             const userCredential = await auth.createUserWithEmailAndPassword(newUser.email, newUser.password);
 
             console.log(userCredential);
+            await db.collection('usuarios').doc().set(newUser);
+
 
             // MUESTRA MENSAJE EXITOSO
             success.classList.add('mensaje-success-activo')
@@ -125,8 +126,7 @@ formulario.addEventListener('submit', async(e) => {
             formulario.reset();
             document.getElementById('name').focus();
 
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
 
             error.innerHTML = '<i class="fas fa-exclamation-triangle"></i><b> Error:</b> El correo ya está registrado';
 
