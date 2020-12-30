@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
     <!--LOGIN BOX CSS-->
     <link rel="stylesheet" href="/css/master.css">
 </head>
+
 <body>
     <div class="container">
         <!--MENU DE NAVEGACION-->
@@ -32,7 +34,7 @@
                     <a href="/html/about us.html">Conozcanos</a>
                 </li>
             </ul>
-            <ul class="nav-menu-right">
+            <ul>
                 <li>
                     <a href="/html/register.html">Registro</a>
                 </li>
@@ -45,22 +47,22 @@
             </ul>
         </nav>
         <hr>
-        
+
 
         <div class="container-login">
             <div class="login-box">
                 <img src="/img/logo-EDGpharmacy-vertical.png" class="avatar" alt="Avatar Image">
                 <h1>Inicie Sesión</h1>
-                <form>
-                <!-- USERNAME INPUT -->
-                <label for="username">Correo electrónico</label>
-                <input type="text" placeholder="Ingrese e-mail">
-                <!-- PASSWORD INPUT -->
-                <label for="password">Contraseña</label>
-                <input type="password" placeholder="Ingrese contraseña">
-                <input type="submit" value="Log In">
-                <a href="#">Lost your Password?</a><br>
-                <a href="/html/register.html">Don't have An account?</a>
+                <form id="login-form">
+                    <!-- USERNAME INPUT -->
+                    <label for="username">Correo electrónico</label>
+                    <input id="email" type="text" placeholder="Ingrese e-mail" autofocus>
+                    <!-- PASSWORD INPUT -->
+                    <label for="password">Contraseña</label>
+                    <input id="password" type="password" placeholder="Ingrese contraseña">
+                    <input type="submit" value="Log In">
+                    <a href="#">Lost your Password?</a><br>
+                    <a href="/html/register.html">Don't have An account?</a>
                 </form>
             </div>
         </div>
@@ -70,5 +72,32 @@
     <footer class="footer">
         <h3>Alien Ø Jazc <br>Copyright</h3>
     </footer>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCbek3UVuarQPall0Fvi2YOoNPAfao-sCQ",
+            authDomain: "turnos-farmacia.firebaseapp.com",
+            projectId: "turnos-farmacia",
+            storageBucket: "turnos-farmacia.appspot.com",
+            messagingSenderId: "284721027828",
+            appId: "1:284721027828:web:b7066a3b3b44ba27315ca1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="/js/login.js"></script>
 </body>
+
 </html>

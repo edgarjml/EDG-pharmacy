@@ -109,6 +109,10 @@
       margin-bottom: 20px;
   }
   
+  .register-box p.login {
+      text-align: center;
+  }
+  
   .register-box input[type="text"],
   input[type="password"],
   input[type="email"] {
@@ -123,20 +127,65 @@
       color: #000;
   }
   
-  .container-name {
+  .color-input {
+      border-color: rgb(255, 0, 0) !important;
+  }
+  
+  .container-user {
       display: flex;
       justify-content: space-between;
   }
   
-  .container-name input[type="text"] {
+  .container-name,
+  .container-lastname {
       width: 48%;
   }
   
-  .register-box p {
+  .container-texto .mensaje-error {
+      height: 45px;
+      line-height: 45px;
+      background: #F66060;
+      padding: 0 15px;
+      border-radius: 20px;
+      display: none;
+  }
+  
+  .container-texto .mensaje-error-activo {
+      display: block;
+  }
+  
+  .container-texto .mensaje-success {
+      height: 45px;
+      line-height: 45px;
+      background: #6ae666;
+      padding: 0 15px;
+      border-radius: 20px;
+      display: none;
+  }
+  
+  .container-texto .mensaje-success-activo {
+      display: block;
+  }
+  
+  .container-texto .mensaje-success .register-box p {
       height: 40px;
       text-align: center;
       font-size: 15px;
       line-height: 40px;
+  }
+  
+  .hidden {
+      margin: 0 0 32px 0;
+      color: rgb(255, 0, 0);
+      font-size: 13px;
+      font-weight: 700;
+      text-align: left;
+      line-height: 0;
+      display: none;
+  }
+  
+  .hidden-activo {
+      display: block;
   }
   
   .register-box a {
