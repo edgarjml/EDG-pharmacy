@@ -98,7 +98,12 @@ inputs.forEach(input => {
 });
 
 // VALIDA EXISTENCIA DE CÉDULA
-const getCedula = () => db.collection('usuarios').get();
+let getCedula;
+if (window.location.pathname === '/html/register.html') {
+    getCedula = () => db.collection('usuarios').get();
+} else if (window.location.pathname === '/html/registerAdmin.html') {
+    getCedula = () => db.collection('admin').get();
+}
 
 // EVENTO DEL FORMULARIO
 formulario.addEventListener('submit', async(e) => {
@@ -148,7 +153,11 @@ formulario.addEventListener('submit', async(e) => {
 
                 console.log(userCredential);
                 // REGISTRA UN USUARIO
-                await db.collection('usuarios').doc().set(newUser);
+                if (window.location.pathname === '/html/register.html') {
+                    await db.collection('usuarios').doc().set(newUser);
+                } else if (window.location.pathname === '/html/registerAdmin.html') {
+                    await db.collection('admin').doc().set(newUser);
+                }
 
                 setMessageError('success', null);
 
