@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <!--CUSTOM CSS-->
     <link rel="stylesheet" href="/css/style.css">
+    <!--LOGIN BOX CSS-->
+    <link rel="stylesheet" href="/css/master.css">
 </head>
 <body>
     <div class="container">
@@ -30,20 +32,61 @@
                     <a href="/html/about us.html">Conozcanos</a>
                 </li>
             </ul>
-            <ul class="nav-menu-right">
-                <li>
-                    <a href="/html/register.html">Registro</a>
-                </li>
-                <li>
-                    <a href="/html/login.html">Iniciar sesión</a>
-                </li>
-                <li>
-                    <i class="fas fa-capsules"></i>
-                </li>
-            </ul>
+
+            <div hidden>
+                <ul class="nav-menu-right">
+                    <li>
+                        <a href="/html/register.html">Registro</a>
+                    </li>
+                    <li>
+                        <a href="/html/login.html">Iniciar sesión</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-capsules"></i>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <hr>
 
+        <div class="container-transactions">
+            <div class="transactions-box">
+                <h3>Porfavor rellene todos los campos para agendar una cita en nuestra farmacia.</h3>
+                <form id="transactions-form">
+
+                    <div class="container-name">
+                        <label id="nombresCompletos" for="names">Nombres y Apellidos</label>
+                        <label id="namesUser" type="string" required>EDGAR JOSÉ MURILLO LAZ</label>
+                    </div>
+
+                    <div class="container-name">
+                        <label id="cedulaTrans" for="cedulaTrans">N° de identificación</label>
+                        <label id="idetification" type="string" required>1315597300</label>
+                    </div>
+
+                    <div class="container-name">
+                        <label id="" type="text" required>Seleccione servicio</label>
+                        <select name="select" id="service">
+                            <option id="turno" value="value1">Atención personalizada</option>
+                            <option id="retiro" value="value2" selected>Retiro de productos</option>
+                        </select>
+                    </div>
+
+                    <div class="container-name">
+                        <label id="" type="text" required>Fecha</label>
+                        <input id="date" type="date">
+
+                        <label id="" type="text" required>Hora</label>
+                        <input id="hour" type="time">
+                    </div>
+
+                    <input id="description" type="text" placeholder="Breve descripción de su requerimiento" required>
+
+                    <input id="btnTurno" class="buttonRegister" type="submit" value="Solicitar Turno">
+
+                </form>
+            </div>
+        </div>
     </div>
 
 
