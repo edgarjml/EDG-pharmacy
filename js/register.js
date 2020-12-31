@@ -147,6 +147,7 @@ formulario.addEventListener('submit', async(e) => {
                 const userCredential = await auth.createUserWithEmailAndPassword(newUser.email, newUser.password);
 
                 console.log(userCredential);
+
                 // REGISTRA UN USUARIO
                 await db.collection('usuarios').doc().set(newUser);
 
