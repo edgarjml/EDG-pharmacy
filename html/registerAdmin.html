@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | EDG Pharmacy</title>
+    <!--FONT QUICKSAND-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <!--CUSTOM CSS-->
+    <link rel="stylesheet" href="/css/style.css">
+    <!--LOGIN BOX CSS-->
+    <link rel="stylesheet" href="/css/master.css">
+</head>
+
+<body>
+    <div class="container">
+        <!--MENU DE NAVEGACION-->
+        <nav class="nav-main">
+            <a href="/index.html">
+                <img src="/img/logo-EDGpharmacy-horiz.png" alt="EDGpharmacyLogo" class="nav-brand">
+            </a>
+            <ul class="nav-menu">
+                <li>
+                    <a href="/html/transactions.html">Transacciones</a>
+                </li>
+                <li>
+                    <a href="/html/search.html">Consultas</a>
+                </li>
+                <li>
+                    <a href="/html/about us.html">Conozcanos</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="/html/register.html">Registro</a>
+                </li>
+                <li>
+                    <a href="/html/login.html">Iniciar sesión</a>
+                </li>
+                <li>
+                    <i class="fas fa-capsules"></i>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+
+
+        <div class="container-register">
+            <div class="register-box">
+                <h1>Crea tu cuenta</h1>
+                <form id="register-form">
+                    <div class="container-user">
+                        <!--NOMBRE-->
+                        <div class="container-name">
+                            <input name="name" id="name" type="text" placeholder="Ingrese sus nombres" autofocus autocomplete="off">
+                            <p id="obligatorio-name" class="hidden">Ingrese sus dos nombres</p>
+                        </div>
+                        <!--APELLIDO-->
+                        <div class="container-lastname" class="container-lastname">
+                            <input name="lastname" id="lastname" type="text" placeholder="Ingrese sus apellidos" autocomplete="off">
+                            <p id="obligatorio-lastname" class="hidden">Ingrese sus dos apellidos</p>
+                        </div>
+                    </div>
+
+                    <!--CEDULA-->
+                    <div class="container-cedula">
+                        <input name="cedula" id="cedula" type="text" placeholder="Ingrese su número de cédula o pasaporte" autocomplete="off">
+                        <p id="obligatorio-cedula" class="hidden">Ingrese su número de cédula (10 dígitos)</p>
+                    </div>
+
+                    <!--EMAIL-->
+                    <div class="container-email">
+                        <input name="email" id="email" type="email" placeholder="Ingrese su correo electrónico" autocomplete="off">
+                        <p id="obligatorio-email" class="hidden">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo</p>
+                    </div>
+
+                    <!--CONTRASEÑA-->
+                    <div class="container-password">
+                        <input name="password" id="password" type="password" placeholder="Cree una contraseña" autocomplete="off">
+                        <p id="obligatorio-password" class="hidden">La contraseña tiene que ser de 4 a 12 caracteres</p>
+                    </div>
+
+                    <!--CONFIRMAR CONTRASEÑA-->
+                    <div class="container-confirmPassword">
+                        <input name="confirmPassword" id="confirmPassword" type="password" placeholder="Repita la contraseña" autocomplete="off">
+                        <p id="obligatorio-confirmPassword" class="hidden">Ambas contraseñas deben ser iguales</p>
+                    </div>
+
+                    <!--MENSAJE DE ERROR-->
+                    <div class="container-texto">
+                        <p class="mensaje-error"></p>
+                    </div>
+
+                    <!--BOTON ENVIAR Y MENSAJE DE EXITO-->
+                    <div class="container-texto">
+                        <button type="submit" class="buttonRegister">Registrar</button>
+                        <p class="mensaje-success"><i class="fas fa-check-circle"></i> Formulario enviado exitosamente!</p>
+                    </div>
+                </form>
+                <p class="login"><a href="/html/login.html">Ya tengo una cuenta</a></p>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!--FOOTER-->
+    <footer class="footer">
+        <h3>Alien Ø Jazc<br>Copyright</h3>
+    </footer>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCbek3UVuarQPall0Fvi2YOoNPAfao-sCQ",
+            authDomain: "turnos-farmacia.firebaseapp.com",
+            projectId: "turnos-farmacia",
+            storageBucket: "turnos-farmacia.appspot.com",
+            messagingSenderId: "284721027828",
+            appId: "1:284721027828:web:b7066a3b3b44ba27315ca1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="/js/register.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
