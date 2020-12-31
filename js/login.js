@@ -10,6 +10,7 @@ loginForm.addEventListener('submit', async(e) => {
     const password = loginForm['password'];
 
     try {
+        // REALIZA LA AUTENTICACIÓN CON FIREBASE
         const userCredential = await auth.signInWithEmailAndPassword(email.value, password.value);
 
         console.log(userCredential);
@@ -28,6 +29,4 @@ loginForm.addEventListener('submit', async(e) => {
             error.classList.remove('mensaje-error-activo')
         }, 3000);
     }
-
-
 })
