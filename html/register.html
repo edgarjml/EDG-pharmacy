@@ -53,29 +53,56 @@
             <div class="register-box">
                 <h1>Crea tu cuenta</h1>
                 <form id="register-form">
-                    <div class="container-name">
-                        <input id="name" type="text" placeholder="Ingrese sus nombres" autofocus required>
-                        <input id="lastname" type="text" placeholder="Ingrese sus apellidos" required>
+                    <div class="container-user">
+                        <!--NOMBRE-->
+                        <div class="container-name">
+                            <input name="name" id="name" type="text" placeholder="Ingrese sus nombres" autofocus autocomplete="off">
+                            <p id="obligatorio-name" class="hidden">Ingrese sus dos nombres</p>
+                        </div>
+                        <!--APELLIDO-->
+                        <div class="container-lastname" class="container-lastname">
+                            <input name="lastname" id="lastname" type="text" placeholder="Ingrese sus apellidos" autocomplete="off">
+                            <p id="obligatorio-lastname" class="hidden">Ingrese sus dos apellidos</p>
+                        </div>
                     </div>
 
-                    <input id="cedula" type="text" placeholder="Ingrese su número de cédula o pasaporte" required>
+                    <!--CEDULA-->
+                    <div class="container-cedula">
+                        <input name="cedula" id="cedula" type="text" placeholder="Ingrese su número de cédula o pasaporte" autocomplete="off">
+                        <p id="obligatorio-cedula" class="hidden">Ingrese su número de cédula (10 dígitos)</p>
+                    </div>
 
-                    <input id="email" type="email" placeholder="Ingrese su correo electrónico" required>
+                    <!--EMAIL-->
+                    <div class="container-email">
+                        <input name="email" id="email" type="email" placeholder="Ingrese su correo electrónico" autocomplete="off">
+                        <p id="obligatorio-email" class="hidden">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo</p>
+                    </div>
 
-                    <input id="password" type="password" placeholder="Cree una contraseña" required>
+                    <!--CONTRASEÑA-->
+                    <div class="container-password">
+                        <input name="password" id="password" type="password" placeholder="Cree una contraseña" autocomplete="off">
+                        <p id="obligatorio-password" class="hidden">La contraseña tiene que ser de 4 a 12 caracteres</p>
+                    </div>
 
-                    <input id="confirmPassword" type="password" placeholder="Repita la contraseña" required>
+                    <!--CONFIRMAR CONTRASEÑA-->
+                    <div class="container-confirmPassword">
+                        <input name="confirmPassword" id="confirmPassword" type="password" placeholder="Repita la contraseña" autocomplete="off">
+                        <p id="obligatorio-confirmPassword" class="hidden">Ambas contraseñas deben ser iguales</p>
+                    </div>
 
-                    <input id="btn" class="buttonRegister" type="submit" value="Registrar">
+                    <!--MENSAJE DE ERROR-->
+                    <div class="container-texto">
+                        <p class="mensaje-error"></p>
+                    </div>
 
-
+                    
                     <p><a href="/html/login.html">Ya tengo una cuenta</a></p>
                 </form>
+                <p class="login"><a href="/html/login.html">Ya tengo una cuenta</a></p>
             </div>
         </div>
     </div>
     <br>
-
 
     <!--FOOTER-->
     <footer class="footer">
@@ -86,6 +113,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -104,8 +133,8 @@
         firebase.initializeApp(firebaseConfig);
     </script>
 
-    <script src="/main.js"></script>
-
+    <script src="/js/register.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
