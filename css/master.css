@@ -6,6 +6,10 @@
       height: 100vh;
   }
   
+  .login-form {
+      margin-bottom: 20px;
+  }
+  
   .login-box {
       width: 320px;
       height: 420px;

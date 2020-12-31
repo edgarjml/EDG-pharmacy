@@ -97,6 +97,9 @@ inputs.forEach(input => {
     input.addEventListener('blur', validarFormulario);
 });
 
+// VALIDA EXISTENCIA DE CÉDULA
+const getCedula = () => db.collection('usuarios').get();
+
 // EVENTO DEL FORMULARIO
 formulario.addEventListener('submit', async(e) => {
     e.preventDefault();
@@ -104,17 +107,19 @@ formulario.addEventListener('submit', async(e) => {
     const error = document.querySelector('.mensaje-error');
     const success = document.querySelector('.mensaje-success');
 
-    // VERIFICA QUE TODOS LOS CAMPOS ESTEN CORRECTOS PARA SER GUARDADOS EN FIREBASE
-    if (campos.name && campos.lastname && campos.cedula && campos.email && campos.password) {
+    // FUNCIÓN PARA MOSTRAR MENSAJES DE ERROR O EXITO AL REGISTRARSE
+    const setMessageError = (type, menssage) => {
+        if (type === 'error') {
+            error.innerHTML = `<i class="fas fa-exclamation-triangle"></i><b> Error:</b> ${menssage}`;
 
-        try {
-            // REGISTRA UN USUARIO EN FIREBASE
-            const userCredential = await auth.createUserWithEmailAndPassword(newUser.email, newUser.password);
+            // MUESTRA MENSAJE DE ERROR
+            error.classList.add('mensaje-error-activo')
 
-            console.log(userCredential);
-            await db.collection('usuarios').doc().set(newUser);
-
-
+            // LUEGO DE 3sg DESAPARECE
+            setTimeout(() => {
+                error.classList.remove('mensaje-error-activo')
+            }, 3000);
+        } else {
             // MUESTRA MENSAJE EXITOSO
             success.classList.add('mensaje-success-activo')
 
@@ -122,30 +127,41 @@ formulario.addEventListener('submit', async(e) => {
             setTimeout(() => {
                 success.classList.remove('mensaje-success-activo')
             }, 3000);
-
-            formulario.reset();
-            document.getElementById('name').focus();
-
-        } catch (err) {
-
-            error.innerHTML = '<i class="fas fa-exclamation-triangle"></i><b> Error:</b> El correo ya está registrado';
-
-            // MUESTRA MENSAJE DE ERROR
-            error.classList.add('mensaje-error-activo')
-
-            setTimeout(() => {
-                error.classList.remove('mensaje-error-activo')
-            }, 3000);
         }
+    }
 
+    // VERIFICA QUE TODOS LOS CAMPOS ESTEN CORRECTOS PARA SER GUARDADOS EN FIREBASE
+    if (campos.name && campos.lastname && campos.cedula && campos.email && campos.password) {
+
+        //OBTENER DATOS PARA VALIDAR QUE LA CÉDULA NO ESTÉ REGISTRADA MÁß DE 2 VECES
+        const querySnapshot = await getCedula();
+        querySnapshot.forEach(doc => {
+            if (doc.data().cedula === newUser.cedula) {
+                campos['cedula'] = false;
+            }
+        });
+
+        if (campos.cedula) {
+            try {
+                // CREA UN USUARIO EN FIREBASE
+                const userCredential = await auth.createUserWithEmailAndPassword(newUser.email, newUser.password);
+
+                console.log(userCredential);
+                // REGISTRA UN USUARIO
+                await db.collection('usuarios').doc().set(newUser);
+
+                setMessageError('success', null);
+
+                formulario.reset();
+                document.getElementById('name').focus();
+
+            } catch (err) {
+                setMessageError('error', 'El correo ya está registrado');
+            }
+        } else {
+            setMessageError('error', 'El número de cédula ya está registrado');
+        }
     } else {
-        error.innerHTML = '<i class="fas fa-exclamation-triangle"></i><b> Error:</b> Por favor rellena el formulario correctamente';
-
-        // MUESTRA MENSAJE DE ERROR
-        error.classList.add('mensaje-error-activo')
-
-        setTimeout(() => {
-            error.classList.remove('mensaje-error-activo')
-        }, 3000);
+        setMessageError('error', 'Por favor rellena el formulario correctamente');
     }
 });

@@ -53,7 +53,7 @@
             <div class="login-box">
                 <img src="/img/logo-EDGpharmacy-vertical.png" class="avatar" alt="Avatar Image">
                 <h1>Inicie Sesión</h1>
-                <form id="login-form">
+                <form class="login-form" id="login-form">
                     <!-- USERNAME INPUT -->
                     <label for="username">Correo electrónico</label>
                     <input id="email" type="text" placeholder="Ingrese e-mail" autofocus>
@@ -64,6 +64,9 @@
                     <a href="#">Lost your Password?</a><br>
                     <a href="/html/register.html">Don't have An account?</a>
                 </form>
+                <div class="container-texto">
+                    <p class="mensaje-error"><i class="fas fa-exclamation-triangle"></i><b> Error:</b> Datos incorrectos</p>
+                </div>
             </div>
         </div>
     </div>
@@ -98,6 +101,7 @@
     </script>
 
     <script src="/js/login.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
