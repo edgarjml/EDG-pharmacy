@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +13,15 @@
     <!--CUSTOM CSS-->
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
     <div class="container">
+        <div id="contenedor-carga">
+            <div id="carga"></div>
+        </div>
         <!--MENU DE NAVEGACION-->
         <nav class="nav-main">
-            <a href="/index.html">
+            <a href="/html/manager.html">
                 <img src="/img/logo-EDGpharmacy-horiz.png" alt="EDGpharmacyLogo" class="nav-brand">
             </a>
             <ul class="nav-menu">
@@ -26,21 +31,25 @@
                 <li>
                     <a href="/html/search.html">Consultas</a>
                 </li>
-                <li>
-                    <a href="/html/about us.html">Conozcanos</a>
-                </li>
+                <div hidden>
+                    <li>
+                        <a href="/html/aboutUs.html">Conozcanos</a>
+                    </li>
+                </div>
             </ul>
-            <ul class="nav-menu-right">
-                <li>
-                    <a href="/html/register.html">Registro</a>
-                </li>
-                <li>
-                    <a href="/html/login.html">Iniciar sesión</a>
-                </li>
-                <li>
-                    <i class="fas fa-capsules"></i>
-                </li>
-            </ul>
+            <div hidden>
+                <ul class="nav-menu-right">
+                    <li>
+                        <a href="/html/register.html">Registro</a>
+                    </li>
+                    <li>
+                        <a href="/html/login.html">Iniciar sesión</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-capsules"></i>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <hr>
 
@@ -51,5 +60,35 @@
     <footer class="footer">
         <h3>Alien Ø Jazc Copyright</h3>
     </footer>
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCbek3UVuarQPall0Fvi2YOoNPAfao-sCQ",
+            authDomain: "turnos-farmacia.firebaseapp.com",
+            projectId: "turnos-farmacia",
+            storageBucket: "turnos-farmacia.appspot.com",
+            messagingSenderId: "284721027828",
+            appId: "1:284721027828:web:b7066a3b3b44ba27315ca1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="/js/validarRuta.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

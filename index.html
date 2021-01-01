@@ -22,14 +22,16 @@
                 <img src="/img/logo-EDGpharmacy-horiz.png" alt="EDGpharmacyLogo" class="nav-brand">
             </a>
             <ul class="nav-menu">
+                <div hidden>
+                    <li>
+                        <a href="/html/transactions.html">Transacciones</a>
+                    </li>
+                    <li>
+                        <a href="/html/search.html">Consultas</a>
+                    </li>
+                </div>
                 <li>
-                    <a href="/html/transactions.html">Transacciones</a>
-                </li>
-                <li>
-                    <a href="/html/search.html">Consultas</a>
-                </li>
-                <li>
-                    <a href="/html/about us.html">Conozcanos</a>
+                    <a href="/html/aboutUs.html">Conozcanos</a>
                 </li>
             </ul>
             <ul>
@@ -191,6 +193,8 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     </script>
+
+    <script src="/js/validarRuta.js"></script>
 
 </body>
 

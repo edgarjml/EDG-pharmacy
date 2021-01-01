@@ -15,6 +15,7 @@ let campos = {
     admin: false
 }
 
+
 // EVENTO DEL FORM
 loginForm.addEventListener('submit', async(e) => {
     e.preventDefault();
@@ -25,6 +26,10 @@ loginForm.addEventListener('submit', async(e) => {
     try {
         // REALIZA LA AUTENTICACIÓN CON FIREBASE
         const userCredential = await auth.signInWithEmailAndPassword(email.value, password.value);
+
+        console.log(userCredential);
+
+        await sessionStorage.setItem('email', userCredential.user.email);
 
         //OBTENER DATOS PARA VALIDAR SI ES USUARIO O ADMIN
         const querySnapshotUser = await getEmailUser();
@@ -70,4 +75,4 @@ loginForm.addEventListener('submit', async(e) => {
             error.classList.remove('mensaje-error-activo')
         }, 3000);
     }
-})
+});

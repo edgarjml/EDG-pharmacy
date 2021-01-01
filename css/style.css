@@ -1,20 +1,72 @@
-* {
-    box-sizing: border-box;
+*,
+*:after,
+*:before {
+    font-family: 'Quicksand', sans-serif;
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* LOADER */
+
+#contenedor-carga {
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    z-index: 10000;
+}
+
+#carga {
+    border: 15px solid #ccc;
+    border-top-color: #00665f;
+    border-top-style: groove;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    -webkit-animation: girar 1.5s linear infinite;
+    -o-animation: girar 1.5s linear infinite;
+    animation: girar 1.5s linear infinite;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 body {
     background: white;
     color: #38424b;
     font-size: 16px;
-    font-family: 'Quicksand', sans-serif;
 }
 
 
 /*NAVIGATION MENU*/
 
-a {
+button.btn-logout {
+    border: none;
+    font-size: 18px;
+    padding: 6px;
+}
+
+a,
+button.btn-logout {
     color: #38424b;
     text-decoration: none;
 }
@@ -50,11 +102,13 @@ ul {
     padding: 10px;
 }
 
-.nav-main ul li a {
+.nav-main ul li a,
+button.btn-logout {
     padding: 6px;
 }
 
-.nav-main ul li a:hover {
+.nav-main ul li a:hover,
+button.btn-logout:hover {
     border-bottom: 2px solid #353535;
     background-color: #a8d4ca;
 }
