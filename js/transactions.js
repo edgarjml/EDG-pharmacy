@@ -68,14 +68,14 @@ const validaTurno = async(cedula, service) => {
     switch (service) {
         case 'retiro':
             querySnapshotTurno.forEach(doc => {
-                if (doc.data().cedula === cedula && doc.data().service === service && doc.data().estado === true) {
+                if (doc.data().cedula === cedula && doc.data().service === service && doc.data().estado === false) {
                     turnoExist = true;
                 }
             });
             break;
         case 'atencion':
             querySnapshotTurno.forEach(doc => {
-                if (doc.data().cedula === cedula && doc.data().service === service && doc.data().estado === true) {
+                if (doc.data().cedula === cedula && doc.data().service === service && doc.data().estado === false) {
                     turnoExist = true;
                 }
             });
@@ -96,10 +96,9 @@ formulario.addEventListener('submit', async(e) => {
     const description = document.getElementById('description').value;
 
     let date = new Date();
-    // Hora:Minuto:Segundos
+    // Hora:Minuto
     let hour = date.getHours();
     let minute = date.getMinutes();
-    let seconds = date.getSeconds();
 
     //Día-Mes-Año
     let day = date.getDate();
@@ -111,11 +110,10 @@ formulario.addEventListener('submit', async(e) => {
     if (month.toString().length === 1) month = `0${month}`;
 
     //Formatear hora
-    if (hour === 0) hour = `0${hour}`;
+    if (hour.toString().length === 1) hour = `0${hour}`;
     if (minute.toString().length === 1) minute = `0${minute}`;
-    if (seconds.toString().length === 1) seconds = `0${seconds}`;
 
-    let hourTurno = `${hour} : ${minute} : ${seconds}`;
+    let hourTurno = `${hour}:${minute}`;
     let dateTurno = `${day}/${month}/${year}`
 
     const turnoExist = await validaTurno(cedula, service);
@@ -132,7 +130,7 @@ formulario.addEventListener('submit', async(e) => {
                 description,
                 dateTurno,
                 hourTurno,
-                estado: true
+                estado: false
             }
 
             await db.collection('turnos').doc().set(turno);
