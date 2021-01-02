@@ -9,9 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- FONT AWESOME-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/7182b1db19.js" crossorigin="anonymous"></script>
     <!--CUSTOM CSS-->
     <link rel="stylesheet" href="/css/style.css">
+    <!--LOGIN BOX CSS-->
+    <link rel="stylesheet" href="/css/master.css">
 </head>
 
 <body>
@@ -24,19 +26,21 @@
             <a href="/html/manager.html">
                 <img src="/img/logo-EDGpharmacy-horiz.png" alt="EDGpharmacyLogo" class="nav-brand">
             </a>
-            <ul class="nav-menu">
-                <li>
-                    <a href="/html/transactions.html">Transacciones</a>
-                </li>
-                <li>
-                    <a href="/html/search.html">Consultas</a>
-                </li>
-                <div hidden>
+            <div hidden>
+                <ul class="nav-menu">
                     <li>
-                        <a href="/html/aboutUs.html">Conozcanos</a>
+                        <a href="/html/transactions.html">Transacciones</a>
                     </li>
-                </div>
-            </ul>
+                    <li>
+                        <a href="/html/search.html">Consultas</a>
+                    </li>
+                    <div hidden>
+                        <li>
+                            <a href="/html/aboutUs.html">Conozcanos</a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
             <div hidden>
                 <ul class="nav-menu-right">
                     <li>
@@ -50,18 +54,53 @@
                     </li>
                 </ul>
             </div>
+            <ul>
+                <li>
+                    <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
+                </li>
+            </ul>
         </nav>
         <hr>
 
+        <div class="container-search">
+            <h1>Administrar Turnos</h1>
+            <form class="container-busqueda">
+                <div>
+                    <label for="desdeFecha">Desde:</label>
+                    <input type="date" id="desdeFecha">
+                    <input type="time" id="desdeHora">
+                </div>
+                <div>
+                    <label for="hastaFecha">Hasta:</label>
+                    <input type="date" id="hastaFecha">
+                    <input type="time" id="hastaHora">
+                </div>
+                <div class="btn-buscar">
+                    <button id="btn-buscar">Buscar</button>
+                    <button id="btn-limpiar">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </form>
+            <div class="table-register">
+                <div class="table-admin table-title">
+                    <h2>Fecha</h2>
+                    <h2>Hora</h2>
+                    <h2>Cédula</h2>
+                    <h2>Cliente</h2>
+                    <h2>Turno</h2>
+                    <h2>Servicio</h2>
+                    <h2></h2>
+                </div>
+                <div id="table-body"></div>
+            </div>
+        </div>
     </div>
-
 
     <!--FOOTER-->
     <footer class="footer">
         <h3>Alien Ø Jazc Copyright</h3>
     </footer>
-
-
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
@@ -88,7 +127,7 @@
     </script>
 
     <script src="/js/validarRuta.js"></script>
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src="/js/manager.js"></script>
 </body>
 
 </html>

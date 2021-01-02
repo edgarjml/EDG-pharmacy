@@ -77,25 +77,27 @@
                     </div>
 
                     <div class="container-double">
-                        <label id="" type="text" required>Seleccione servicio</label>
+                        <label id="" type="text">Seleccione servicio</label>
                         <select name="select" id="service">
-                            <option id="turno" value="value1">Atención personalizada</option>
-                            <option id="retiro" value="value2" selected>Retiro de productos</option>
+                            <option id="turno" value="atencion">Atención personalizada</option>
+                            <option id="retiro" value="retiro" selected>Retiro de productos</option>
                         </select>
                     </div>
 
-                    <div class="container-double">
-                        <label id="" type="text" required>Fecha</label>
-                        <input id="date" type="date">
+                    <textarea name="descripcion" id="description" cols="102" rows="7" placeholder="Breve descripción de su requerimiento"></textarea>
 
-                        <label id="" type="text" required>Hora</label>
-                        <input id="hour" type="time">
+                    <!--MENSAJE DE ERROR-->
+                    <div class="container-texto">
+                        <p class="mensaje-error"></p>
                     </div>
 
-                    <textarea name="descripcion" id="description" cols="102" rows="7" placeholder="Breve descripción de su requerimiento" required></textarea>
-
+                    <!--BOTON ENVIAR-->
                     <input id="btnTurno" class="buttonRegister" type="submit" value="Solicitar Turno">
 
+                    <!--MENSAJE DE EXITO-->
+                    <div class="container-texto">
+                        <p class="mensaje-success"><i class="fas fa-check-circle"></i><b> Turno registrado exitosamente!</b></p>
+                    </div>
                 </form>
             </div>
         </div>

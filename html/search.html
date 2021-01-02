@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <!--CUSTOM CSS-->
     <link rel="stylesheet" href="/css/style.css">
+    <!--LOGIN BOX CSS-->
+    <link rel="stylesheet" href="/css/master.css">
 </head>
 
 <body>
@@ -21,7 +23,7 @@
         </div>
         <!--MENU DE NAVEGACION-->
         <nav class="nav-main">
-            <a href="/html/transactions.html">
+            <a href="/html/search.html">
                 <img src="/img/logo-EDGpharmacy-horiz.png" alt="EDGpharmacyLogo" class="nav-brand">
             </a>
             <ul class="nav-menu">
@@ -36,11 +38,6 @@
                         <a href="/html/aboutUs.html">Conozcanos</a>
                     </li>
                 </div>
-            </ul>
-            <ul>
-                <li>
-                    <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
-                </li>
             </ul>
             <ul>
                 <li>
@@ -63,14 +60,25 @@
         </nav>
         <hr>
 
+        <div class="container-search">
+            <h1>Turnos registrados</h1>
+            <div class="table-register">
+                <div class="table table-title">
+                    <h2>Fecha</h2>
+                    <h2>Hora</h2>
+                    <h2>Número de Turno</h2>
+                    <h2>Tipo Servicio</h2>
+                    <h2>Estado Turno</h2>
+                </div>
+                <div id="table-body"></div>
+            </div>
+        </div>
     </div>
-
 
     <!--FOOTER-->
     <footer class="footer">
         <h3>Alien Ø Jazc Copyright</h3>
     </footer>
-
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
@@ -97,6 +105,7 @@
     </script>
 
     <script src="/js/validarRuta.js"></script>
+    <script src="/js/search.js"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 

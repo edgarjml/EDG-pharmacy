@@ -113,7 +113,7 @@ formulario.addEventListener('submit', async(e) => {
     const success = document.querySelector('.mensaje-success');
 
     // FUNCIÓN PARA MOSTRAR MENSAJES DE ERROR O EXITO AL REGISTRARSE
-    const setMessageError = (type, menssage) => {
+    const setMessage = (type, menssage) => {
         if (type === 'error') {
             error.innerHTML = `<i class="fas fa-exclamation-triangle"></i><b> Error:</b> ${menssage}`;
 
@@ -160,18 +160,18 @@ formulario.addEventListener('submit', async(e) => {
                     await db.collection('admin').doc().set(newUser);
                 }
 
-                setMessageError('success', null);
+                setMessage('success', null);
 
                 formulario.reset();
                 document.getElementById('name').focus();
 
             } catch (err) {
-                setMessageError('error', 'El correo ya está registrado');
+                setMessage('error', 'El correo ya está registrado');
             }
         } else {
-            setMessageError('error', 'El número de cédula ya está registrado');
+            setMessage('error', 'El número de cédula ya está registrado');
         }
     } else {
-        setMessageError('error', 'Por favor rellena el formulario correctamente');
+        setMessage('error', 'Por favor rellena el formulario correctamente');
     }
 });
