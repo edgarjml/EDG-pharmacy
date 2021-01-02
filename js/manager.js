@@ -16,17 +16,25 @@ const getTurno = () => db.collection('turnos').get();
 
 // CREA LOS ITEMS DE TURNOS EN EL DOM
 const getItem = (doc) => {
+
+    let date = doc.dateTurno.split('/');
+    let fecha = `${date[2]}-${date[1]}-${date[0]}`;
+    // let hour = doc.hourTurno.split();
+
     let service = doc.service.charAt(0).toUpperCase() + doc.service.slice(1);
+    let estado;
+    doc.estado ? estado = 'Atendido' : estado = 'Pendiente';
 
     const div = document.createElement('DIV');
     div.classList.add('table-admin');
     div.innerHTML = `
-                <h2>${doc.dateTurno}</h2>
-                <h2>${doc.hourTurno}</h2>
+                <input type="date" value="${fecha}">
+                <input type="time" value="${doc.hourTurno}">
                 <h2>${doc.cedula}</h2>
                 <h2>${doc.nameComplete}</h2>
                 <h2>${doc.id}</h2>
                 <h2>${service}</h2>
+                <h2>${estado}</h2>
                 <div class="btn-admin">
                     <button>
                     <i class="fas fa-check-circle"></i>
@@ -75,8 +83,8 @@ btnBuscar.addEventListener('click', async(e) => {
 
         let fechaDesde = `${dateD[2]}/${dateD[1]}/${dateD[0]}`;
         let fechaHasta = `${dateH[2]}/${dateH[1]}/${dateH[0]}`;
-        let horaDesde = `${hourD[0]} : ${hourD[1]} : 00`;
-        let horaHasta = `${hourH[0]} : ${hourH[1]} : 00`;
+        let horaDesde = `${hourD[0]}:${hourD[1]}`;
+        let horaHasta = `${hourH[0]}:${hourH[1]}`;
 
         //ELIMINA TODOS LOS ITEMS DE TURNOS ANTERIORES
         while (table.hasChildNodes()) {

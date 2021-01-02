@@ -299,11 +299,19 @@ input[type="time"] {
 
 .table-admin {
     display: grid;
-    grid-template-columns: repeat(3, 13%) 25% repeat(2, 13%) 10%;
+    grid-template-columns: repeat(2, 10%) 13% 25% repeat(2, 13%) 10% 10%;
     justify-items: center;
     align-items: center;
     text-align: center;
     margin: 12px 0 12px 0;
+}
+
+.table-admin input[type='date'] {
+    width: 125px;
+}
+
+.table-admin input[type='time'] {
+    width: 70px;
 }
 
 .btn-admin button {
