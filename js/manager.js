@@ -73,31 +73,38 @@ const getItem = (docs) => {
     // let hour = doc.hourTurno.split();
 
     let service = doc.service.charAt(0).toUpperCase() + doc.service.slice(1);
+
     let estado;
-    doc.estado ? estado = 'Atendido' : estado = 'Pendiente';
+    if (doc.estado) {
+        estado = 'Atendido';
+
+    } else {
+        estado = 'Pendiente';
+    }
 
     const div = document.createElement('DIV');
     div.classList.add('table-admin', 'table-items');
     div.innerHTML = `
-                <input type="date" class="fechaTuro" data-id="${docId}" value="${fecha}">
-                <input type="time" class="horaTurno" data-id="${docId}" value="${doc.hourTurno}">
-                <h2>${doc.cedula}</h2>
-                <h2>${doc.nameComplete}</h2>
-                <h2>${doc.id}</h2>
-                <h2>${service}</h2>
-                <h2>${estado}</h2>
-                <div class="btn-admin">
-                    <button>
-                    <i class="fas fa-check-circle btn-admin-accept" data-id="${docId}"></i>
-                    </button>
-                    <button>
-                    <i class="fas fa-exchange-alt btn-admin-modify" data-id="${docId}"></i>
-                    </button>
-                    <button>
-                    <i class="fas fa-trash-alt btn-admin-delete" data-id="${docId}"></i>
-                    </button>
-                </div>
-                `;
+        <input type="date" class="fechaTuro" data-id="${docId}" value="${fecha}">
+        <input type="time" class="horaTurno" data-id="${docId}" value="${doc.hourTurno}">
+        <h2>${doc.cedula}</h2>
+        <h2>${doc.nameComplete}</h2>
+        <h2>${doc.id}</h2>
+        <h2>${service}</h2>
+        <h2>${estado}</h2>
+        <div class="btn-admin">
+            <button class="btn-accept">
+            <i class="fas fa-check-circle btn-admin-accept" data-id="${docId}"></i>
+            </button>
+            <button class="btn-modify">
+            <i class="fas fa-exchange-alt btn-admin-modify" data-id="${docId}"></i>
+            </button>
+            <button class="btn-delete">
+            <i class="fas fa-trash-alt btn-admin-delete" data-id="${docId}"></i>
+            </button>
+        </div>
+        `;
+
     table.appendChild(div);
 
     //FUNCIÓN DE LOS BOTONES ACCEPTAR - MODIFICAR - ELIMINAR
@@ -133,7 +140,6 @@ const modificaTurno = () => {
     const btnsModify = document.querySelectorAll('.btn-admin-modify');
     const fechas = document.querySelectorAll('.fechaTuro');
     const horas = document.querySelectorAll('.horaTurno');
-
     btnsModify.forEach(btn => {
         btn.addEventListener('click', async(e) => {
             try {
@@ -202,8 +208,6 @@ btnBuscar.addEventListener('click', async(e) => {
 
     loader.removeAttribute('style');
 
-    const querySnapshotTurno = await getTurnos();
-
     setTimeout(() => {
         loader.style.visibility = 'hidden';
         loader.style.opacity = '0';
@@ -221,39 +225,44 @@ btnBuscar.addEventListener('click', async(e) => {
         let horaDesde = `${hourD[0]}:${hourD[1]}`;
         let horaHasta = `${hourH[0]}:${hourH[1]}`;
 
-        //ELIMINA TODOS LOS ITEMS DE TURNOS ANTERIORES
-        while (table.hasChildNodes()) {
-            table.removeChild(table.firstChild);
-        }
-
         //INSERTA LOS ITEMS DE TURNOS CONSULTADOS
         onGetTurno(querySnapshotTurno => {
             table.innerHTML = '';
+            let nullRegistro = true;
             querySnapshotTurno.forEach(doc => {
                 if ((doc.data().dateTurno >= fechaDesde && doc.data().hourTurno >= horaDesde) && (doc.data().dateTurno <= fechaHasta && doc.data().hourTurno <= horaHasta)) {
+                    nullRegistro = false;
+
                     setTimeout(() => {
                         getItem(doc);
                     }, 1000);
 
-                } else {
-                    // MOSTRAR MENSAJE DE QUE NO SE ENCONTRARON REGISTROS
                 }
             });
+            if (nullRegistro) {
+                setTimeout(() => {
+                    setMessage('error', 'No se encontraron registros en ese rango de fechas');
+                }, 1000);
+            }
         });
-
     } else {
-        console.log('VACCIOOO')
+        setTimeout(() => {
+            setMessage('error', 'Debe seleccionar los campos de búsqueda');
+        }, 1000);
     }
 });
 
-
-// REFRESCA LA PÁGINA
+// LIMPIAR LA BUSQUEDA
 btnLimpiar.addEventListener('click', (e) => {
     e.preventDefault();
-
-    // const form = document.querySelector('.container-busqueda');
-    // form.reset();
-
-    window.location.href = 'http://127.0.0.1:5500/html/manager.html';
-
+    const form = document.querySelector('.container-busqueda');
+    form.reset();
+    onGetTurno(querySnapshotTurno => {
+        table.innerHTML = '';
+        querySnapshotTurno.forEach(doc => {
+            if (!doc.data().estado) {
+                getItem(doc);
+            }
+        });
+    });
 });
