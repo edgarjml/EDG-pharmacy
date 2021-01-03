@@ -129,8 +129,8 @@ const aceptarTurno = () => {
             try {
                 let turno = await getTurno(e.target.dataset.id);
                 let newTurno = turno.data();
-                console.log(newTurno)
-                    // CAMBIA EL ESTADO DEL TURNO
+                console.log(newTurno);
+                // CAMBIA EL ESTADO DEL TURNO
                 newTurno.estado = true;
 
                 await updateTurno(e.target.dataset.id, newTurno);
@@ -266,14 +266,5 @@ btnBuscar.addEventListener('click', async(e) => {
 // LIMPIAR LA BUSQUEDA
 btnLimpiar.addEventListener('click', (e) => {
     e.preventDefault();
-    const form = document.querySelector('.container-busqueda');
-    form.reset();
-    onGetTurno(querySnapshotTurno => {
-        table.innerHTML = '';
-        querySnapshotTurno.forEach(doc => {
-            if (!doc.data().estado) {
-                getItem(doc);
-            }
-        });
-    });
+    window.location.href = 'http://127.0.0.1:5500/html/manager.html';
 });
