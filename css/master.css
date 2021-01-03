@@ -442,8 +442,28 @@ input[type="time"] {
     margin-bottom: 15px;
 }
 
-@media screen and (max-width:700px) {
-    body {
-        background-color: red;
+@media screen and (min-width:700px) {
+    .table-register {
+        font-size: 15px;
+    }
+
+    .container-busqueda input[type='date']{
+        width: 200px;
+        font-size: 25px;
+    }
+
+    .container-busqueda input[type='time']{
+        width: 135px;
+        font-size: 25px;
+    }
+
+    .table-admin input[type='date'] {
+        width: 135px;
+        font-size: 15px;
+    }
+    
+    .table-admin input[type='time'] {
+        width: 80px;
+        font-size: 15px;
     }
 }
