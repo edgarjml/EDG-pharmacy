@@ -327,3 +327,13 @@ hr {
     text-align: center;
     padding-bottom: 20px;
 }
+
+.footer2 {
+    background: #05524c;
+    color: #b9b9b9;
+    font-size: 12px;
+    padding: 20px 0;
+    text-align: center;
+    padding-bottom: 20px;
+    position: fixed;
+}

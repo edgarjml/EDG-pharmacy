@@ -88,9 +88,9 @@ const getItem = (docs) => {
         <h2>${service}</h2>
         <h2>${estado}</h2>
         <div class="btn-admin">
-            <button class="fas fa-check-circle btn-admin-accept" data-id="${docId}">Aceptar</button>
-            <button class="fas fa-exchange-alt btn-admin-modify" data-id="${docId}">Modificar</button>
-            <button class="fas fa-trash-alt btn-admin-delete" data-id="${docId}">Eliminar</button>
+            <button class="fas fa-check-circle btn-admin-accept" data-id="${docId}"><br>Aceptar</button>
+            <button class="fas fa-exchange-alt btn-admin-modify" data-id="${docId}"><br>Modificar</button>
+            <button class="fas fa-trash-alt btn-admin-delete" data-id="${docId}"><br>Eliminar</button>
         </div>
         `;
 
