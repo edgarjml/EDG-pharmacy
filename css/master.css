@@ -313,6 +313,12 @@ input[type="time"] {
     width: 70px;
 }
 
+.btn-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .btn-admin button {
     border: none;
     margin: 10px;
