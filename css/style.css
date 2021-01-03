@@ -1,6 +1,4 @@
-*,
-*:after,
-*:before {
+* {
     font-family: 'Quicksand', sans-serif;
     margin: 0;
     padding: 0;
@@ -138,12 +136,14 @@ hr {
     justify-content: flex-end;
 }
 
-.showcase h2, .showcase p{
-    color:rgb(39, 39, 39);
+.showcase h2,
+.showcase p {
+    color: rgb(39, 39, 39);
     text-align: center;
     text-shadow: 2px 2px 2px white;
 }
-.showcase p{
+
+.showcase p {
     font-size: 18px;
     font-weight: bold;
 }
