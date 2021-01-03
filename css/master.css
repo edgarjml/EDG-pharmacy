@@ -1,9 +1,15 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
 .container-login {
     margin: 0;
     padding: 0;
     font-size: 16px;
-    font-family: 'Quicksand', sans-serif;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-form {
@@ -15,13 +21,18 @@
     height: 420px;
     background: rgb(233, 233, 233);
     color: rgb(32, 32, 32);
-    top: 65%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 70px 30px;
     border-radius: 8%;
+}
+
+.img {
+    width: 200px;
+    height: 200px;
+}
+
+.img img {
+    max-width: 100%;
 }
 
 .login-box .avatar {
@@ -95,11 +106,11 @@
 .container-search,
 .container-transactions {
     margin: 0;
-    padding: 0;
+    padding: 0 50px;
     box-sizing: border-box;
     font-size: 16px;
     font-family: 'Quicksand', sans-serif;
-    height: 100vh;
+    height: 80vh;
 }
 
 .register-box {
@@ -324,7 +335,7 @@ input[type="time"] {
 
 .table-admin {
     display: grid;
-    grid-template-columns: repeat(2, 10%) 13% 25% repeat(2, 13%) 10% 10%;
+    grid-template-columns: 11% 9% 11% 22% repeat(3, 10%) 17%;
     justify-items: center;
     align-items: center;
     text-align: center;
@@ -338,8 +349,6 @@ input[type="time"] {
 .table-admin input[type='time'] {
     width: 70px;
 }
-
-
 
 .container-busqueda {
     display: flex;
@@ -407,11 +416,9 @@ input[type="time"] {
 /* STYLES CONSULTAS USUARIO */
 
 .table-register {
-    width: 1700px;
+    width: 100%;
     height: auto;
     background: rgb(233, 233, 233);
-    padding: 30px;
-    margin: 150px;
     margin-top: 30px;
     border-radius: 4%;
     font-size: 10px;
@@ -420,6 +427,7 @@ input[type="time"] {
 }
 
 .btn-admin {
+    width: 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -428,7 +436,7 @@ input[type="time"] {
 .btn-admin button {
     border: none;
     margin: 2px;
-    justify-content: flex-end;
+    font-size: 15px;
 }
 
 .container-search h1 {
@@ -444,26 +452,28 @@ input[type="time"] {
 
 @media screen and (min-width:700px) {
     .table-register {
-        font-size: 15px;
+        font-size: 12px;
     }
-
-    .container-busqueda input[type='date']{
+    .container-busqueda input[type='date'] {
         width: 200px;
         font-size: 25px;
     }
-
-    .container-busqueda input[type='time']{
+    .container-busqueda input[type='time'] {
         width: 135px;
         font-size: 25px;
     }
-
     .table-admin input[type='date'] {
         width: 135px;
         font-size: 15px;
     }
-    
     .table-admin input[type='time'] {
         width: 80px;
         font-size: 15px;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .btn-admin {
+        width: 220px;
     }
 }
