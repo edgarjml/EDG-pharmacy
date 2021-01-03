@@ -378,11 +378,32 @@ input[type="time"] {
     opacity: .5;
 }
 
+.table-register input[type='date'] {
+    width: 100px;
+    font-size: 10px;
+}
+
+.table-register input[type='time'] {
+    font-size: 10px;
+}
+
+.fa-trash-alt {
+    color: rgb(172, 0, 0);
+}
+
+.fa-check-circle {
+    color: #00665f;
+}
+
+.fa-exchange-alt {
+    color: rgb(197, 137, 69);
+}
+
 
 /* STYLES CONSULTAS USUARIO */
 
 .table-register {
-    width: 1000px;
+    width: 1050px;
     height: 500px;
     background: rgb(233, 233, 233);
     padding: 30px;
@@ -404,6 +425,8 @@ input[type="time"] {
     text-decoration: underline;
     margin-bottom: 15px;
 }
+
+
 
 @media screen and (max-width:700px) {
     body {
