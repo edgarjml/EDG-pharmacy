@@ -75,12 +75,7 @@ const getItem = (docs) => {
     let service = doc.service.charAt(0).toUpperCase() + doc.service.slice(1);
 
     let estado;
-    if (doc.estado) {
-        estado = 'Atendido';
-
-    } else {
-        estado = 'Pendiente';
-    }
+    doc.estado ? estado = 'Atendido' : estado = 'Pendiente';
 
     const div = document.createElement('DIV');
     div.classList.add('table-admin', 'table-items');
@@ -93,19 +88,21 @@ const getItem = (docs) => {
         <h2>${service}</h2>
         <h2>${estado}</h2>
         <div class="btn-admin">
-            <button class="btn-accept">
-            <i class="fas fa-check-circle btn-admin-accept" data-id="${docId}"></i>
-            </button>
-            <button class="btn-modify">
-            <i class="fas fa-exchange-alt btn-admin-modify" data-id="${docId}"></i>
-            </button>
-            <button class="btn-delete">
-            <i class="fas fa-trash-alt btn-admin-delete" data-id="${docId}"></i>
-            </button>
+            <button class="fas fa-check-circle btn-admin-accept" data-id="${docId}">Aceptar</button>
+            <button class="fas fa-exchange-alt btn-admin-modify" data-id="${docId}">Modificar</button>
+            <button class="fas fa-trash-alt btn-admin-delete" data-id="${docId}">Eliminar</button>
         </div>
         `;
 
     table.appendChild(div);
+
+    // DESHABILITA LOS BOTONES SI ESTAN ATENDIDOS
+    const btnsAcc = document.querySelectorAll('.btn-admin-accept');
+    const btnsMod = document.querySelectorAll('.btn-admin-modify');
+    const btnsDel = document.querySelectorAll('.btn-admin-delete');
+    disabledBtnAdmin(btnsAcc);
+    disabledBtnAdmin(btnsMod);
+    disabledBtnAdmin(btnsDel);
 
     //FUNCIÓN DE LOS BOTONES ACCEPTAR - MODIFICAR - ELIMINAR
     aceptarTurno();
@@ -113,23 +110,34 @@ const getItem = (docs) => {
     eliminaTurno();
 }
 
+// DESHABILITA LOS BOTONES SI ESTAN ATENDIDOS
+const disabledBtnAdmin = (btns) => {
+    btns.forEach(async btn => {
+        const doc = await getTurno(btn.getAttribute('data-id'));
+        if (doc.data().estado) {
+            console.log(doc.data())
+            btn.setAttribute('disabled', '');
+        }
+    });
+}
+
 // ACEPTA UN TURNO
 const aceptarTurno = () => {
     const btnsAccept = document.querySelectorAll('.btn-admin-accept');
     btnsAccept.forEach(btn => {
         btn.addEventListener('click', async(e) => {
-            console.log(e.target.dataset.id);
             try {
                 let turno = await getTurno(e.target.dataset.id);
                 let newTurno = turno.data();
-
-                // CAMBIA EL ESTADO DEL TURNO
+                console.log(newTurno)
+                    // CAMBIA EL ESTADO DEL TURNO
                 newTurno.estado = true;
 
                 await updateTurno(e.target.dataset.id, newTurno);
                 setMessage('acepta', null);
-            } catch (error) {
-                setMessage('error', 'Ocurrió un problema al modificar');
+            } catch (err) {
+                console.log(err)
+                setMessage('error', 'Ocurrió un problema al aceptar');
             }
         });
     });
@@ -141,7 +149,10 @@ const modificaTurno = () => {
     const fechas = document.querySelectorAll('.fechaTuro');
     const horas = document.querySelectorAll('.horaTurno');
     btnsModify.forEach(btn => {
+        console.log(btn.getAttribute('data-id'))
         btn.addEventListener('click', async(e) => {
+            console.log(e.target)
+            console.log(e.target.dataset.id)
             try {
                 let turno = await getTurno(e.target.dataset.id);
                 let newTurno = turno.data();
@@ -201,7 +212,6 @@ window.addEventListener('DOMContentLoaded', async(e) => {
     });
 });
 
-
 // EVENTO PARA LA BÚSQUEDA
 btnBuscar.addEventListener('click', async(e) => {
     e.preventDefault();
@@ -239,6 +249,7 @@ btnBuscar.addEventListener('click', async(e) => {
 
                 }
             });
+
             if (nullRegistro) {
                 setTimeout(() => {
                     setMessage('error', 'No se encontraron registros en ese rango de fechas');
