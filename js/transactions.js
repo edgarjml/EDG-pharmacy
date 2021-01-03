@@ -25,7 +25,14 @@ window.addEventListener('DOMContentLoaded', async(e) => {
 
 // GENERA EL NÚMERO DE TURNO DEL USUARIO
 const generaIdTurno = async() => {
-    const getTurnos = () => db.collection('turnos').get();
+    // const getTurnos = () => db.collection('turnos').get();
+    // const querySnapshotTurno = await getTurnos();
+
+    // let totalTurnos = querySnapshotTurno.docs.length;
+    // ++totalTurnos;
+
+    // return totalTurnos;
+    const getTurnos = () => db.collection('auxturnos').get();
     const querySnapshotTurno = await getTurnos();
 
     let totalTurnos = querySnapshotTurno.docs.length;
@@ -133,6 +140,7 @@ formulario.addEventListener('submit', async(e) => {
                 estado: false
             }
 
+            await db.collection('auxturnos').doc().set(turno);
             await db.collection('turnos').doc().set(turno);
             console.log(turno);
             setMessage('success', null);

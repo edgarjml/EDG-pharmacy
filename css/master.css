@@ -163,6 +163,32 @@ input[type="email"] {
     display: block;
 }
 
+.container-texto .mensaje-modificar {
+    height: 45px;
+    line-height: 45px;
+    background: #d8670a;
+    padding: 0 15px;
+    border-radius: 20px;
+    display: none;
+}
+
+.container-texto .mensaje-modificar-activo {
+    display: block;
+}
+
+.container-texto .mensaje-delete {
+    height: 45px;
+    line-height: 45px;
+    background: #d8670a;
+    padding: 0 15px;
+    border-radius: 20px;
+    display: none;
+}
+
+.container-texto .mensaje-delete-activo {
+    display: block;
+}
+
 .container-texto .mensaje-success {
     height: 45px;
     line-height: 45px;
