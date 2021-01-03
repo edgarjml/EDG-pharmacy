@@ -40,6 +40,9 @@ const getItem = (doc) => {
                     <i class="fas fa-check-circle"></i>
                     </button>
                     <button>
+                    <i class="fas fa-exchange-alt"></i>
+                    </button>
+                    <button>
                     <i class="fas fa-trash-alt"></i>
                     </button>
                 </div>
