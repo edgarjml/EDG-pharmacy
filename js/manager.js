@@ -99,6 +99,88 @@ const getItem = (docs) => {
                 </div>
                 `;
     table.appendChild(div);
+
+    //FUNCIÓN DE LOS BOTONES ACCEPTAR - MODIFICAR - ELIMINAR
+    aceptarTurno();
+    modificaTurno();
+    eliminaTurno();
+}
+
+// ACEPTA UN TURNO
+const aceptarTurno = () => {
+    const btnsAccept = document.querySelectorAll('.btn-admin-accept');
+    btnsAccept.forEach(btn => {
+        btn.addEventListener('click', async(e) => {
+            console.log(e.target.dataset.id);
+            try {
+                let turno = await getTurno(e.target.dataset.id);
+                let newTurno = turno.data();
+
+                // CAMBIA EL ESTADO DEL TURNO
+                newTurno.estado = true;
+
+                await updateTurno(e.target.dataset.id, newTurno);
+                setMessage('acepta', null);
+            } catch (error) {
+                setMessage('error', 'Ocurrió un problema al modificar');
+            }
+        });
+    });
+}
+
+// MODIFICA UN TURNO
+const modificaTurno = () => {
+    const btnsModify = document.querySelectorAll('.btn-admin-modify');
+    const fechas = document.querySelectorAll('.fechaTuro');
+    const horas = document.querySelectorAll('.horaTurno');
+
+    btnsModify.forEach(btn => {
+        btn.addEventListener('click', async(e) => {
+            try {
+                let turno = await getTurno(e.target.dataset.id);
+                let newTurno = turno.data();
+
+                fechas.forEach(fecha => {
+                    if (fecha.dataset.id === e.target.dataset.id) {
+                        console.log(fecha.value);
+                        let date = fecha.value.split('-');
+                        let newFecha = `${date[2]}/${date[1]}/${date[0]}`;
+
+                        newTurno.dateTurno = newFecha;
+                    }
+                });
+
+                horas.forEach(hora => {
+                    if (hora.dataset.id === e.target.dataset.id) {
+                        console.log(hora.value);
+
+                        newTurno.hourTurno = hora.value;
+                    }
+                });
+
+                await updateTurno(e.target.dataset.id, newTurno);
+                setMessage('modifica', null);
+            } catch (error) {
+                setMessage('error', 'Ocurrió un problema al modificar');
+            }
+        });
+    });
+}
+
+// ELIMINA UN TURNO
+const eliminaTurno = () => {
+    const btnsDelete = document.querySelectorAll('.btn-admin-delete');
+    btnsDelete.forEach(btn => {
+        btn.addEventListener('click', async(e) => {
+            try {
+                let del = await deleteTurno(e.target.dataset.id);
+                console.log(del)
+                setMessage('delete', null);
+            } catch (error) {
+                setMessage('error', 'Ocurrió un problema al eliminar');
+            }
+        });
+    });
 }
 
 // EVENTO AL CARGAR LA PÁGINA
@@ -110,78 +192,6 @@ window.addEventListener('DOMContentLoaded', async(e) => {
                 getItem(doc);
             }
         });
-
-        // ACEPTA UN TURNO
-        const btnsAccept = document.querySelectorAll('.btn-admin-accept');
-        btnsAccept.forEach(btn => {
-            btn.addEventListener('click', async(e) => {
-                console.log(e.target.dataset.id);
-                try {
-                    let turno = await getTurno(e.target.dataset.id);
-                    let newTurno = turno.data();
-
-                    // CAMBIA EL ESTADO DEL TURNO
-                    newTurno.estado = true;
-
-                    await updateTurno(e.target.dataset.id, newTurno);
-                    setMessage('acepta', null);
-                } catch (error) {
-                    setMessage('error', 'Ocurrió un problema al modificar');
-                }
-            });
-        });
-
-        // MODIFICA UN TURNO
-        const btnsModify = document.querySelectorAll('.btn-admin-modify');
-        const fechas = document.querySelectorAll('.fechaTuro');
-        const horas = document.querySelectorAll('.horaTurno');
-
-        btnsModify.forEach(btn => {
-            btn.addEventListener('click', async(e) => {
-                try {
-                    let turno = await getTurno(e.target.dataset.id);
-                    let newTurno = turno.data();
-
-                    fechas.forEach(fecha => {
-                        if (fecha.dataset.id === e.target.dataset.id) {
-                            console.log(fecha.value);
-                            let date = fecha.value.split('-');
-                            let newFecha = `${date[2]}/${date[1]}/${date[0]}`;
-
-                            newTurno.dateTurno = newFecha;
-                        }
-                    });
-
-                    horas.forEach(hora => {
-                        if (hora.dataset.id === e.target.dataset.id) {
-                            console.log(hora.value);
-
-                            newTurno.hourTurno = hora.value;
-                        }
-                    });
-
-                    await updateTurno(e.target.dataset.id, newTurno);
-                    setMessage('modifica', null);
-                } catch (error) {
-                    setMessage('error', 'Ocurrió un problema al modificar');
-                }
-            });
-        });
-
-        // ELIMINA UN TURNO
-        const btnsDelete = document.querySelectorAll('.btn-admin-delete');
-        btnsDelete.forEach(btn => {
-            btn.addEventListener('click', async(e) => {
-                try {
-                    let del = await deleteTurno(e.target.dataset.id);
-                    console.log(del)
-                    setMessage('delete', null);
-                } catch (error) {
-                    setMessage('error', 'Ocurrió un problema al eliminar');
-                }
-            });
-        });
-
     });
 });
 
@@ -217,19 +227,25 @@ btnBuscar.addEventListener('click', async(e) => {
         }
 
         //INSERTA LOS ITEMS DE TURNOS CONSULTADOS
-        querySnapshotTurno.forEach(doc => {
-            if ((doc.data().dateTurno >= fechaDesde && doc.data().hourTurno >= horaDesde) && (doc.data().dateTurno <= fechaHasta && doc.data().hourTurno <= horaHasta)) {
-                setTimeout(() => {
-                    getItem(doc);
-                }, 1000);
-            } else {
-                // MOSTRAR MENSAJE DE QUE NO SE ENCONTRARON REGISTROS
-            }
+        onGetTurno(querySnapshotTurno => {
+            table.innerHTML = '';
+            querySnapshotTurno.forEach(doc => {
+                if ((doc.data().dateTurno >= fechaDesde && doc.data().hourTurno >= horaDesde) && (doc.data().dateTurno <= fechaHasta && doc.data().hourTurno <= horaHasta)) {
+                    setTimeout(() => {
+                        getItem(doc);
+                    }, 1000);
+
+                } else {
+                    // MOSTRAR MENSAJE DE QUE NO SE ENCONTRARON REGISTROS
+                }
+            });
         });
+
     } else {
         console.log('VACCIOOO')
     }
 });
+
 
 // REFRESCA LA PÁGINA
 btnLimpiar.addEventListener('click', (e) => {
