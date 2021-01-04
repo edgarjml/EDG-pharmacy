@@ -431,7 +431,6 @@ input[type="time"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Quicksand', sans-serif !important;
 }
 
 .btn-admin button {
