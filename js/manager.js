@@ -80,8 +80,8 @@ const getItem = (docs) => {
     const div = document.createElement('DIV');
     div.classList.add('table-admin', 'table-items');
     div.innerHTML = `
-        <input type="date" class="fechaTuro" data-id="${docId}" value="${fecha}">
-        <input type="time" class="horaTurno" data-id="${docId}" value="${doc.hourTurno}">
+        <input type="date" min="${fecha}" class="fechaTuro" data-id="${docId}" value="${fecha}">
+        <input type="time" min="${doc.hourTurno}" class="horaTurno" data-id="${docId}" value="${doc.hourTurno}">
         <h2>${doc.cedula}</h2>
         <h2>${doc.nameComplete}</h2>
         <h2>${doc.id}</h2>
