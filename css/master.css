@@ -439,6 +439,7 @@ input[type="time"] {
 
 .btn-admin button {
     border: none;
+    outline: none;
     margin: 2px;
     font-size: 15px;
 }
@@ -446,11 +447,6 @@ input[type="time"] {
 .btn-admin button:hover {
     cursor: pointer;
     border-bottom: 2px solid #353535;
-}
-
-.btn-admin button:active {
-    border: none;
-    text-decoration: none;
 }
 
 .container-search h1 {
