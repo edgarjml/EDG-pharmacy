@@ -450,6 +450,7 @@ input[type="time"] {
 
 .btn-admin button:active {
     border: none;
+    text-decoration: none;
 }
 
 .container-search h1 {
