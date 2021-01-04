@@ -117,7 +117,7 @@ const disabledBtnAdmin = (btns) => {
         if (doc.data().estado) {
             btn.setAttribute('disabled', '');
             btn.style.cursor = 'not-allowed';
-            btn.style.opacity = '.4';
+            btn.style.opacity = '.3';
         }
     });
 }
