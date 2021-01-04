@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', async(e) => {
 
     if (emailSesion === null && (rutaActual === rutas.transactions || rutaActual === rutas.registerAdmin || rutaActual === rutas.manager || rutaActual === rutas.search)) {
 
-        window.location.href = 'http://127.0.0.1:5500/html/login.html';
+        window.location.href = 'https://edg-pharmacy.herokuapp.com/html/login.html';
 
     } else if (emailSesion !== null) {
 
@@ -63,11 +63,11 @@ window.addEventListener('DOMContentLoaded', async(e) => {
         console.log(users.admin);
 
         if (users.usuario === true && (rutaActual === rutas.registerAdmin || rutaActual === rutas.manager || rutaActual === rutas.login || rutaActual === rutas.register)) {
-            window.location.href = 'http://127.0.0.1:5500/html/transactions.html';
+            window.location.href = 'https://edg-pharmacy.herokuapp.com/html/transactions.html';
         } else if (users.admin === true && (rutaActual === rutas.transactions || rutaActual === rutas.search || rutaActual === rutas.login || rutaActual === rutas.register)) {
-            window.location.href = 'http://127.0.0.1:5500/html/manager.html';
+            window.location.href = 'https://edg-pharmacy.herokuapp.com/html/manager.html';
         } else if (users.usuario === false && users.admin === false && (rutaActual === rutas.transactions || rutaActual === rutas.search || rutaActual === rutas.manager || rutaActual === rutas.login || rutaActual === rutas.register || rutaActual === rutas.index)) {
-            window.location.href = 'http://127.0.0.1:5500/html/registerAdmin.html';
+            window.location.href = 'https://edg-pharmacy.herokuapp.com/html/registerAdmin.html';
         }
     }
 });
@@ -80,5 +80,5 @@ btnLogout.addEventListener('click', (e) => {
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('cedula');
 
-    window.location.href = 'http://127.0.0.1:5500/html/login.html';
+    window.location.href = 'https://edg-pharmacy.herokuapp.com/html/login.html';
 });

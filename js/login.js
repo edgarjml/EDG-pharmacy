@@ -40,7 +40,7 @@ loginForm.addEventListener('submit', async(e) => {
             querySnapshotUser.forEach(doc => {
                 if (doc.data().email === userCredential.user.email) {
                     campos['usuario'] = true;
-                    window.location.href = 'http://127.0.0.1:5500/html/transactions.html';
+                    window.location.href = 'https://edg-pharmacy.herokuapp.com/html/transactions.html';
                 }
             });
         }
@@ -50,14 +50,14 @@ loginForm.addEventListener('submit', async(e) => {
             querySnapshotAdmin.forEach(doc => {
                 if (doc.data().email === userCredential.user.email) {
                     campos['admin'] = true;
-                    window.location.href = 'http://127.0.0.1:5500/html/manager.html';
+                    window.location.href = 'https://edg-pharmacy.herokuapp.com/html/manager.html';
                 }
             });
         }
 
         // PARA CREAR UN NUEVO USUARIO ADMINISTRADOR
         if (campos.usuario === false && campos.admin === false) {
-            window.location.href = 'http://127.0.0.1:5500/html/registerAdmin.html';
+            window.location.href = 'https://edg-pharmacy.herokuapp.com/html/registerAdmin.html';
         }
 
     } catch (err) {

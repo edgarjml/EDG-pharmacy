@@ -266,5 +266,5 @@ btnBuscar.addEventListener('click', async(e) => {
 // LIMPIAR LA BUSQUEDA
 btnLimpiar.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = 'http://127.0.0.1:5500/html/manager.html';
+    window.location.href = 'https://edg-pharmacy.herokuapp.com/html/manager.html';
 });

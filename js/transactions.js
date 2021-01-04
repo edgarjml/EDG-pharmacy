@@ -25,13 +25,6 @@ window.addEventListener('DOMContentLoaded', async(e) => {
 
 // GENERA EL NÚMERO DE TURNO DEL USUARIO
 const generaIdTurno = async() => {
-    // const getTurnos = () => db.collection('turnos').get();
-    // const querySnapshotTurno = await getTurnos();
-
-    // let totalTurnos = querySnapshotTurno.docs.length;
-    // ++totalTurnos;
-
-    // return totalTurnos;
     const getTurnos = () => db.collection('auxturnos').get();
     const querySnapshotTurno = await getTurnos();
 
