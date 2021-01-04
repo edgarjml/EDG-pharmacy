@@ -115,7 +115,6 @@ const disabledBtnAdmin = (btns) => {
     btns.forEach(async btn => {
         const doc = await getTurno(btn.getAttribute('data-id'));
         if (doc.data().estado) {
-            console.log(doc.data())
             btn.setAttribute('disabled', '');
         }
     });
@@ -129,7 +128,7 @@ const aceptarTurno = () => {
             try {
                 let turno = await getTurno(e.target.dataset.id);
                 let newTurno = turno.data();
-                console.log(newTurno);
+
                 // CAMBIA EL ESTADO DEL TURNO
                 newTurno.estado = true;
 
@@ -149,17 +148,13 @@ const modificaTurno = () => {
     const fechas = document.querySelectorAll('.fechaTuro');
     const horas = document.querySelectorAll('.horaTurno');
     btnsModify.forEach(btn => {
-        console.log(btn.getAttribute('data-id'))
         btn.addEventListener('click', async(e) => {
-            console.log(e.target)
-            console.log(e.target.dataset.id)
             try {
                 let turno = await getTurno(e.target.dataset.id);
                 let newTurno = turno.data();
 
                 fechas.forEach(fecha => {
                     if (fecha.dataset.id === e.target.dataset.id) {
-                        console.log(fecha.value);
                         let date = fecha.value.split('-');
                         let newFecha = `${date[2]}/${date[1]}/${date[0]}`;
 
@@ -169,15 +164,14 @@ const modificaTurno = () => {
 
                 horas.forEach(hora => {
                     if (hora.dataset.id === e.target.dataset.id) {
-                        console.log(hora.value);
-
                         newTurno.hourTurno = hora.value;
                     }
                 });
 
                 await updateTurno(e.target.dataset.id, newTurno);
                 setMessage('modifica', null);
-            } catch (error) {
+            } catch (err) {
+                console.log(err);
                 setMessage('error', 'Ocurrió un problema al modificar');
             }
         });
@@ -191,9 +185,9 @@ const eliminaTurno = () => {
         btn.addEventListener('click', async(e) => {
             try {
                 let del = await deleteTurno(e.target.dataset.id);
-                console.log(del)
                 setMessage('delete', null);
-            } catch (error) {
+            } catch (err) {
+                console.log(err)
                 setMessage('error', 'Ocurrió un problema al eliminar');
             }
         });

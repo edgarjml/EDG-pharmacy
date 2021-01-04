@@ -150,7 +150,6 @@ formulario.addEventListener('submit', async(e) => {
             try {
                 // CREA UN USUARIO EN FIREBASE
                 const userCredential = await auth.createUserWithEmailAndPassword(newUser.email, newUser.password);
-
                 console.log(userCredential);
 
                 // REGISTRA UN USUARIO

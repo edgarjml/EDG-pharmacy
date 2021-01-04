@@ -14,11 +14,7 @@ window.addEventListener('DOMContentLoaded', async(e) => {
 
     }, 1500);
     const rutaActual = window.location.pathname;
-    console.log(rutaActual);
-
     const emailSesion = sessionStorage.getItem('email');
-    console.log(emailSesion);
-
     const rutas = {
         index: '/index.html',
         login: '/html/login.html',
@@ -59,8 +55,6 @@ window.addEventListener('DOMContentLoaded', async(e) => {
             }
         });
 
-        console.log(users.usuario);
-        console.log(users.admin);
 
         if (users.usuario === true && (rutaActual === rutas.registerAdmin || rutaActual === rutas.manager || rutaActual === rutas.login || rutaActual === rutas.register)) {
             window.location.href = 'https://edg-pharmacy.herokuapp.com/html/transactions.html';

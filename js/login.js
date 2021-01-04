@@ -27,8 +27,6 @@ loginForm.addEventListener('submit', async(e) => {
         // REALIZA LA AUTENTICACIÓN CON FIREBASE
         const userCredential = await auth.signInWithEmailAndPassword(email.value, password.value);
 
-        console.log(userCredential);
-
         await sessionStorage.setItem('email', userCredential.user.email);
 
         //OBTENER DATOS PARA VALIDAR SI ES USUARIO O ADMIN

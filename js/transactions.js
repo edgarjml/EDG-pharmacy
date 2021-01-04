@@ -135,7 +135,6 @@ formulario.addEventListener('submit', async(e) => {
 
             await db.collection('auxturnos').doc().set(turno);
             await db.collection('turnos').doc().set(turno);
-            console.log(turno);
             setMessage('success', null);
 
         } catch (err) {
