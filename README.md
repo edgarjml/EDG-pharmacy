@@ -1,6 +1,6 @@
-<p align="center">
-  <img src="https://www.flaticon.com/svg/static/icons/svg/3349/3349593.svg" height="100" width="100" alt="Logo" />
-</p> ## APLICACIÓN DE TURNOS DE FARMACIA
+<p>
+  <img src="https://www.flaticon.com/svg/static/icons/svg/3349/3349593.svg" height="50" width="50" alt="Logo" />
+</p> ##APLICACIÓN DE TURNOS DE FARMACIA
 
 Aplicación de solicitud de turnos para atención o retiro de medicina de una farmacia.
 
