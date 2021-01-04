@@ -1,15 +1,15 @@
-## APLICACIÓN DE TURNOS DE FARMACIA
+## APLICACIÓN DE TURNOS DE FARMACIA <img src="https://www.flaticon.com/svg/static/icons/svg/3349/3349593.svg" height="25" width="25" alt="Logo" />
 
 Aplicación de solicitud de turnos para atención o retiro de medicina de una farmacia.
 
 Para crear un usuario administrador existe un usuario ADMIN que lo crea internamente, para ello,
 logearse con estas credenciales y se accederá al registro de usuarios administradores.
 
-**Correo:** *jadrianzc99@gmail.com* 
+* **Correo:** *jadrianzc99@gmail.com* 
 
-**Contraseña:** *jazc99* 
+* **Contraseña:** *jazc99* 
 
-**Descripción:**
+### 📄 Descripción
 
 El usuario podrá solicitar un turno y consultar los mismos, solamente podrá solicitar un turno por tipo,
 existen dos tipos de turnos, de retiro y de atención. Es decir, si ya tiene solicitado un turno de retiro no 
