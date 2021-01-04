@@ -9,6 +9,11 @@ logearse con estas credenciales y se accederá al registro de usuarios administr
 
 * **Contraseña:** *jazc99* 
 
+### USUARIO ADMINISTRADOR
+* **Correo:** *administrador2@gmail.com* 
+
+* **Contraseña:** *admin2* 
+
 ### 📄 Descripción
 
 El usuario podrá solicitar un turno y consultar los mismos, solamente podrá solicitar un turno por tipo,
