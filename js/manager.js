@@ -116,7 +116,8 @@ const disabledBtnAdmin = (btns) => {
         const doc = await getTurno(btn.getAttribute('data-id'));
         if (doc.data().estado) {
             btn.setAttribute('disabled', '');
-            btn.classList.add('btn-disabled');
+            btn.style.cursor = 'not-allowed';
+            btn.style.opacity = '.4';
         }
     });
 }
